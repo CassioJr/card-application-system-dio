@@ -1,10 +1,10 @@
-package dev.cassio.requestcreditsystem
+package dev.cassio.credit.application.system
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class RequestCreditSystemApplicationTests {
+class CreditApplicationSystemApplication {
 
 	@Test
 	fun contextLoads() {

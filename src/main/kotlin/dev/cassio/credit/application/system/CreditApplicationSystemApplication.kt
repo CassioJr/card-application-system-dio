@@ -1,11 +1,11 @@
-package dev.cassio.requestcreditsystem
+package dev.cassio.credit.application.system
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RequestCreditSystemApplication
+class CreditApplicationSystemApplication
 
 fun main(args: Array<String>) {
-	runApplication<RequestCreditSystemApplication>(*args)
+	runApplication<CreditApplicationSystemApplication>(*args)
 }
