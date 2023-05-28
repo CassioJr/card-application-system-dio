@@ -1,13 +1,12 @@
 package dev.cassio.credit.application.system.controller
 
 import dev.cassio.credit.application.system.dto.CustomerDTO
-import dev.cassio.credit.application.system.dto.CustomerUpdateDto
+import dev.cassio.credit.application.system.dto.CustomerUpdateDTO
 import dev.cassio.credit.application.system.dto.CustomerView
 import dev.cassio.credit.application.system.entity.Customer
 import dev.cassio.credit.application.system.service.impl.CustomerService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -27,10 +26,10 @@ class CustomerResource(
 ) {
 
     @PostMapping
-    fun saveCustomer(@Valid @RequestBody customerDto: CustomerDTO): ResponseEntity<String> {
+    fun saveCustomer(@Valid @RequestBody customerDto: CustomerDTO): ResponseEntity<CustomerView> {
         val savedCustomer = this.customerService.save(customerDto.toEntity())
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Customer ${savedCustomer.email} saved")
+        return ResponseEntity.status(HttpStatus.CREATED).body(CustomerView(savedCustomer))
     }
 
     @GetMapping("/{id}")
@@ -48,7 +47,7 @@ class CustomerResource(
     fun updateCustomer(
         @Valid
         @RequestParam(value = "customerId") id: Long,
-        @RequestBody customerUpdateDto: CustomerUpdateDto
+        @RequestBody customerUpdateDto: CustomerUpdateDTO
     ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpdate = customerUpdateDto.toEntity(customer)

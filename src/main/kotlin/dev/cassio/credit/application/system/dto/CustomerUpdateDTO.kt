@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
 import java.math.BigDecimal
 
-data class CustomerUpdateDto(
+data class CustomerUpdateDTO(
     @field:NotEmpty(message = "Invalid firstName input") val firstName: String,
     @field:NotEmpty(message = "Invalid lastName input") val lastName: String,
     @field:NotNull(message = "Invalid income input") val income: BigDecimal,
